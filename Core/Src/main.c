@@ -99,6 +99,7 @@ int main(void)
   MX_SPI1_Init();
   MX_SPI2_Init();
   MX_ICACHE_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   winc_enter_rom_loader();
 
@@ -391,6 +392,21 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+static void MX_USART3_UART_Init(void)
+{
+    huart3.Instance          = USART3;
+    huart3.Init.BaudRate     = 115200;
+    huart3.Init.WordLength   = UART_WORDLENGTH_8B;
+    huart3.Init.StopBits     = UART_STOPBITS_1;
+    huart3.Init.Parity       = UART_PARITY_NONE;
+    huart3.Init.Mode         = UART_MODE_TX_RX;
+    huart3.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
+    huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+    if (HAL_UART_Init(&huart3) != HAL_OK)
+    {
+        Error_Handler();
+    }
+}
 
 /* USER CODE END 4 */
 
