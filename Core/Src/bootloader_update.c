@@ -1,5 +1,7 @@
 #include "bootloader_update.h"
 
+
+
 void winc_enter_rom_loader(void)
 {
     /* 1) De-assert CHIP_EN, then RESET */
